@@ -1,4 +1,5 @@
 require './player'
+require './question'
 
 class MathGame
 
@@ -19,8 +20,30 @@ class MathGame
     @players[@current_player]
   end
 
+  def start
+    until game_over? do
+      puts "---- NEW TURN ----"
+      puts "#{current_player.name},"
+      q = Question.new
+      if gets.chomp.to_i != q.ans
+        lose_life
+      end
+      swap_players
+      print_lives
+    end
+    puts "---- GAME OVER ----"
+  end
+
   def lose_life
     current_player.lose_life
+  end
+
+  def print_lives
+    puts "P1: #{@players[0].lives} lives vs P2: #{@players[1].lives} lives"
+  end
+
+  def swap_players
+    @current_player = (@current_player + 1) % @players.length
   end
 
   def game_over?
@@ -28,3 +51,5 @@ class MathGame
   end
 
 end
+
+MathGame.main
