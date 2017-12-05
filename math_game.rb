@@ -21,6 +21,14 @@ class MathGame
   end
 
   def start
+    puts "  .     '     ,"
+    puts "    _________"
+    puts " _ /_|_____|_\\ _"
+    puts "   '. \\   / .'"
+    puts "     '.\\ /.'"
+    puts "       '.'"
+    puts "Welcome to Ruby Math Game!"
+    puts "This is a two player game."
     until game_over? do
       puts "---- NEW TURN ----"
       puts "#{current_player.name},"
