@@ -15,4 +15,16 @@ class MathGame
     @current_player = 0
   end
 
+  def current_player
+    @players[@current_player]
+  end
+
+  def lose_life
+    current_player.lose_life
+  end
+
+  def game_over?
+    @players.any? { |player| player.lives <= 0 }
+  end
+
 end
